@@ -6,23 +6,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Глобальный фикс */
 html, body, #root {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden !important;
-  overflow-y: auto;
+  overflow-x: hidden !important; /* нет горизонтального скролла */
+  overflow-y: auto;              /* вертикальный скролл, если контент длинный */
   -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
 }
 
 #root {
-  min-height: 100dvh;           /* ← главное исправление: динамическая высота viewport */
+  min-height: 100dvh;            /* динамическая высота viewport — ключевой фикс для мобильных */
   max-width: 100vw;
   box-sizing: border-box;
 }
 
-/* Фикс для мобильных браузеров */
+/* Поддержка dvh на всех браузерах */
 @supports (height: 100dvh) {
   #root {
     height: 100dvh;
@@ -33,7 +35,8 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-img {
+/* Изображения и большие блоки не вылезают */
+img, .character, .background {
   max-width: 100%;
   height: auto;
   display: block;
