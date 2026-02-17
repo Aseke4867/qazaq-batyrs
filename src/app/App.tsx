@@ -56,11 +56,24 @@ export default function App() {
       case 'friends':
         return <FriendsScreen onNavigate={handleNavigate} xp={xp} />;
       
-      
       default:
         return <MainMenu onNavigate={handleNavigate} xp={xp} />;
     }
   };
 
-  return renderScreen();
+  return (
+    <div 
+      className="
+        w-full 
+        max-w-full 
+        min-h-[100dvh] 
+        overflow-x-hidden 
+        overflow-y-auto 
+        bg-gradient-to-b from-blue-900 to-green-900 
+        text-white
+      "
+    >
+      {renderScreen()}
+    </div>
+  );
 }
