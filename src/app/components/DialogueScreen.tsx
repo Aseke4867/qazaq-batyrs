@@ -19,7 +19,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
 
   const dialogueSteps = [
     {
-      npcText: "Сәлеметсіз бе?",
+      npcText: "Сәлеметсіз бе",
       prompt: "Қалай жауап бересіз? / How will you respond?",
       choices: [
         { id: 1, text: "Қош келдіңіз!", isCorrect: true, xp: 50 },
@@ -27,7 +27,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       ]
     },
     {
-      npcText: "Рақмет! Аман-сау ма?",
+      npcText: "Қалыңыз қалай??",
       prompt: "Жалғастырыңыз / Continue:",
       choices: [
         { id: 1, text: "Жақсы, рақмет!", isCorrect: true, xp: 50 },
@@ -43,7 +43,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       ]
     },
     {
-      npcText: "Сау болыңыз! Қайта келіңіз!",
+      npcText: "Сау болыңыз!",
       prompt: "Қоштасу / Say goodbye:",
       choices: [
         { id: 1, text: "Сау болыңыз!", isCorrect: true, xp: 50 },
@@ -75,7 +75,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
     <div className="
       relative 
       w-full 
-      min-h-[100dvh]                  // ← фикс высоты + адаптация
+      min-h-[100dvh]                  
       overflow-y-auto 
       overflow-x-hidden 
       bg-gradient-to-b from-[#D4A373] via-[#E8C9A0] to-[#D4A373] 
@@ -211,8 +211,6 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
                   }`} style={{ fontFamily: 'Georgia, serif' }}>
                     {choice.text}
                   </span>
-
-                  {/* Убрал Volume2 (подсказку) */}
                   
                   <KazakhOrnament className={`w-8 h-8 opacity-60 scale-x-[-1] ${
                     isSelected ? 'text-white' : 'text-[#8B4513]'
