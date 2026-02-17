@@ -36,7 +36,7 @@ export function LevelComplete({ onNavigate, earnedXP, totalXP }: LevelCompletePr
     <div className="
       relative 
       w-full 
-      min-h-[100dvh]                  // ← фикс высоты + адаптация под мобильные
+      min-h-[100dvh] 
       overflow-y-auto 
       overflow-x-hidden 
       bg-gradient-to-b from-[#87CEEB] to-[#D4A373] 
@@ -54,6 +54,20 @@ export function LevelComplete({ onNavigate, earnedXP, totalXP }: LevelCompletePr
             className="w-full h-full object-cover blur-sm opacity-40"
           />
         </div>
+
+        {/* Celebration sparkles — уменьшил количество для производительности */}
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-[#FFD700] rounded-full animate-pulse opacity-70"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 2}s`
+            }}
+          />
+        ))}
       </div>
 
       {/* Main Content */}
@@ -63,7 +77,7 @@ export function LevelComplete({ onNavigate, earnedXP, totalXP }: LevelCompletePr
           <KazakhOrnament className="absolute -top-4 -left-4 w-16 h-16 text-[#FFD700] opacity-80" />
           <KazakhOrnament className="absolute -top-4 -right-4 w-16 h-16 text-[#FFD700] opacity-80 scale-x-[-1]" />
           
-          <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border-4 border-[#22C55E] shadow-2xl">
+          <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 border-4 border-[#22C55E] shadow-2xl">
             <div className="text-center">
               <div className="text-5xl mb-3">🎉</div>
               <h1 className="text-3xl sm:text-4xl text-[#1E3A8A] mb-2" style={{ fontFamily: 'Georgia, serif' }}>
@@ -79,17 +93,10 @@ export function LevelComplete({ onNavigate, earnedXP, totalXP }: LevelCompletePr
           <KazakhOrnament className="absolute -bottom-4 -right-4 w-16 h-16 text-[#FFD700] opacity-80 scale-[-1]" />
         </div>
 
-      {/* Character Celebration */}
-<div className="flex justify-center mb-6">
-  <div 
-    className="relative"
-    style={{
-      animation: 'gentleBounce 2.5s infinite ease-in-out'  // 2.5s — плавный темп
-    }}
-  >
-    <BatyrCharacter />
-  </div>
-</div>
+        {/* Character Celebration — с низким прыжком */}
+        <div className="flex justify-center mb-6">
+          <BatyrCharacter />  {/* Теперь прыжок управляется внутри BatyrCharacter */}
+        </div>
 
         {/* XP Earned */}
         <div className="relative mb-6">
@@ -110,7 +117,7 @@ export function LevelComplete({ onNavigate, earnedXP, totalXP }: LevelCompletePr
           </div>
         </div>
 
-        {/* Statistics — теперь со скроллом */}
+        {/* Statistics */}
         <div className="space-y-4 mb-6">
           {/* Total XP */}
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 border-3 border-[#40E0D0] shadow-lg">
