@@ -265,7 +265,7 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
               <div className="absolute inset-0 bg-[#22C55E] rounded-2xl blur-md opacity-50 group-hover:opacity-70 transition-all"></div>
               <div className="relative bg-gradient-to-br from-[#22C55E] to-[#16A34A] rounded-2xl px-8 py-4 flex items-center gap-3 border-3 border-white shadow-lg hover:scale-105 transition-transform">
                 <span className="text-lg text-white" style={{ fontFamily: 'Georgia, serif' }}>
-                  {currentQuestion < questions.length - 1 ? 'Келесі / Next' : 'Аяқтау / Finish'}
+                  {currentQuestion < questions.length - 1 ? 'Келесі' : 'Аяқтау'}
                 </span>
               </div>
             </button>
