@@ -1,4 +1,3 @@
-import React from 'react';
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { KazakhOrnament } from "@/app/components/KazakhOrnament";
 import { BatyrCharacter } from "@/app/components/BatyrCharacter";
@@ -10,91 +9,230 @@ interface ProfileScreenProps {
 }
 
 export function ProfileScreen({ onNavigate, xp }: ProfileScreenProps) {
-  // здесь может быть логика useState, если нужно
+  const stats = {
+    vocabulary: 75,
+    speaking: 60,
+    listening: 55,
+    grammar: 40,
+    totalWords: 142,
+    lessonsCompleted: 8,
+    streak: 5,
+    level: Math.floor(xp / 500) + 1
+  };
+
+  const achievements = [
+    { id: 1, title: 'Бірінші қадам', description: 'Complete first lesson', earned: true, icon: '🎯' },
+    { id: 2, title: 'Сөз шебері', description: 'Learn 100 words', earned: true, icon: '📚' },
+    { id: 3, title: 'Батыр', description: 'Reach Level 5', earned: false, icon: '⚔️' },
+    { id: 4, title: 'Қонақжай', description: 'Complete dialogue mission', earned: true, icon: '🏠' },
+  ];
 
   return (
-    <div className="relative w-full min-h-[100dvh] overflow-y-auto bg-gradient-to-b from-blue-500 to-teal-500 p-4">
-      {/* ← весь твой JSX отсюда и до конца */}
-
-      {/* Заголовок с кнопкой назад */}
-      <div className="flex items-center mb-6">
-        <button 
-          onClick={() => onNavigate('menu')}
-          className="p-3 bg-white/20 rounded-full mr-4 text-white text-2xl"
-        >
-          ←
-        </button>
-        <h1 className="text-3xl font-bold text-white">Профиль</h1>
+    <div className="
+      relative 
+      w-full 
+      min-h-[100dvh]                  // ← фикс высоты + скролл
+      overflow-y-auto 
+      overflow-x-hidden 
+      bg-gradient-to-b from-[#87CEEB] to-[#D4A373] 
+      flex 
+      flex-col 
+      items-center 
+      px-4 sm:px-6 py-6
+    ">
+      {/* Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1764521970660-fc4d6e493425?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxLYXpha2hzdGFuJTIwc3RlcHBlJTIwZ29sZGVuJTIwZ3Jhc3MlMjBsYW5kc2NhcGV8ZW58MXx8fHwxNzY5OTY2NTA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+            alt="Steppe landscape"
+            className="w-full h-full object-cover blur-sm opacity-40"
+          />
+        </div>
       </div>
 
-      {/* Карточка профиля */}
-      <div className="
-        bg-white/95 backdrop-blur-md 
-        rounded-3xl 
-        p-5 sm:p-6 
-        border-4 border-cyan-400 
-        shadow-2xl 
-        w-full 
-        max-w-md 
-        mx-auto
-        overflow-hidden  // ← дополнительная защита от вылезания
-      ">
-        {/* Персонаж + имя/уровень/XP */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
-          <div className="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0">
-            {/* здесь твой персонаж */}
-            <div className="w-full h-full bg-amber-300 rounded-full flex items-center justify-center text-6xl">
-              👦 {/* или <BatyrCharacter /> */}
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <button
+            onClick={() => onNavigate('menu')}
+            className="bg-white/90 backdrop-blur-sm rounded-xl p-3 border-2 border-[#40E0D0] shadow-lg hover:scale-110 transition-transform"
+          >
+            <ArrowLeft className="w-6 h-6 text-[#1E3A8A]" />
+          </button>
+          
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-3 border-3 border-[#FFD700] shadow-lg">
+            <h1 className="text-2xl text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+              Профиль
+            </h1>
+          </div>
+          
+          <div className="w-12"></div>
+        </div>
+
+        {/* Главная карточка профиля — теперь адаптивная */}
+        <div className="
+          relative 
+          bg-white/95 backdrop-blur-md 
+          rounded-3xl 
+          p-5 sm:p-6 
+          border-4 border-[#40E0D0] 
+          shadow-2xl 
+          overflow-hidden
+        ">
+          <KazakhOrnament className="absolute -top-3 -left-3 w-12 h-12 text-[#FFD700]" />
+          <KazakhOrnament className="absolute -top-3 -right-3 w-12 h-12 text-[#FFD700] scale-x-[-1]" />
+
+          {/* Персонаж + имя/уровень/XP */}
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+            {/* Персонаж */}
+            <div className="flex-shrink-0">
+              <div className="scale-75 sm:scale-100 origin-top">
+                <BatyrCharacter />
+              </div>
+            </div>
+
+            {/* Инфо */}
+            <div className="flex-1 text-center sm:text-left w-full">
+              <h2 className="
+                text-3xl sm:text-4xl 
+                font-bold 
+                text-[#1E3A8A] 
+                mb-1 
+                break-words 
+                max-w-full
+              " style={{ fontFamily: 'Georgia, serif' }}>
+                Батыр
+              </h2>
+
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                <Trophy className="w-5 h-5 text-[#FFD700]" />
+                <span className="text-lg text-[#40E0D0]" style={{ fontFamily: 'Georgia, serif' }}>
+                  Деңгей {stats.level}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <Zap className="w-5 h-5 text-[#FFA500]" />
+                <span className="text-xl text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+                  {xp} XP
+                </span>
+              </div>
             </div>
           </div>
 
-          <div className="flex-1 text-center sm:text-left w-full">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1E3A8A] break-words">
-              Батыр
-            </h2>
-            <p className="text-xl text-[#40E0D0] mb-2">
-              Денгей 3
-            </p>
-            <div className="flex items-center justify-center sm:justify-start gap-2 bg-yellow-100/80 rounded-lg px-4 py-2">
-              <Zap className="w-6 h-6 text-yellow-600" />
-              <span className="text-2xl font-bold text-yellow-800">
-                {xp} XP
+          {/* Прогресс до следующего уровня */}
+          <div className="mt-6">
+            <div className="flex justify-between text-sm text-[#1E3A8A] mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              <span>Келесі деңгейге дейін</span>
+              <span>{500 - (xp % 500)} XP</span>
+            </div>
+            <div className="bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div
+                className="bg-gradient-to-r from-[#40E0D0] to-[#20B2AA] h-3 rounded-full transition-all"
+                style={{ width: `${(xp % 500) / 5}%` }}
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 gap-3">
+          {/* Vocabulary */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 border-3 border-[#8B4513] shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <BookOpen className="w-6 h-6 text-[#8B4513]" />
+              <span className="text-sm text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+                Сөздік
               </span>
             </div>
+            <div className="text-3xl text-[#1E3A8A] mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              {stats.vocabulary}%
+            </div>
+            <div className="text-xs text-[#40E0D0]" style={{ fontFamily: 'Georgia, serif' }}>
+              +30% бұл аптада
+            </div>
+          </div>
+
+          {/* Speaking */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 border-3 border-[#FF6B9D] shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <Mic className="w-6 h-6 text-[#FF6B9D]" />
+              <span className="text-sm text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+                Сөйлеу
+              </span>
+            </div>
+            <div className="text-3xl text-[#1E3A8A] mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              {stats.speaking}%
+            </div>
+            <div className="text-xs text-[#40E0D0]" style={{ fontFamily: 'Georgia, serif' }}>
+              +25% бұл аптада
+            </div>
+          </div>
+
+          {/* Total Words */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 border-3 border-[#40E0D0] shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <Target className="w-6 h-6 text-[#40E0D0]" />
+              <span className="text-sm text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+                Сөздер
+              </span>
+            </div>
+            <div className="text-3xl text-[#1E3A8A] mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              {stats.totalWords}
+            </div>
+          </div>
+
+          {/* Streak */}
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 border-3 border-[#FFA500] shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">🔥</span>
+              <span className="text-sm text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+                Тізбек
+              </span>
+            </div>
+            <div className="text-3xl text-[#1E3A8A] mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+              {stats.streak} күн
+            </div>
           </div>
         </div>
 
-        {/* Прогресс */}
-        <div className="mb-6">
-          <p className="text-lg text-center text-gray-700 mb-2">
-            Келесі деңгейге дейін 250 XP
-          </p>
-          <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-gradient-to-r from-cyan-500 to-teal-500" 
-              style={{ width: '70%' }} // замени на реальный %
-            />
+        {/* Achievements */}
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl p-5 border-3 border-[#FFD700] shadow-lg">
+          <div className="flex items-center gap-2 mb-4">
+            <Award className="w-6 h-6 text-[#FFD700]" />
+            <h3 className="text-xl text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+              Жетістіктер / Achievements
+            </h3>
           </div>
-        </div>
-
-        {/* Статистика */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-amber-100/80 rounded-2xl p-5 text-center border-2 border-amber-400">
-            <div className="text-4xl font-bold text-amber-800 mb-1">75%</div>
-            <p className="text-lg text-amber-700">Сөздік</p>
-            <p className="text-sm text-green-600">+30% бұл аптада</p>
-          </div>
-
-          <div className="bg-pink-100/80 rounded-2xl p-5 text-center border-2 border-pink-400">
-            <div className="text-4xl font-bold text-pink-800 mb-1">60%</div>
-            <p className="text-lg text-pink-700">Сөйлеу</p>
-            <p className="text-sm text-green-600">+25% бұл аптада</p>
+          <div className="space-y-2">
+            {achievements.map((achievement) => (
+              <div
+                key={achievement.id}
+                className={`rounded-xl p-3 border-2 flex items-center gap-3 ${
+                  achievement.earned
+                    ? 'bg-gradient-to-r from-[#FFD700]/20 to-[#FFA500]/20 border-[#FFD700]'
+                    : 'bg-gray-100 border-gray-300 opacity-60'
+                }`}
+              >
+                <span className="text-2xl">{achievement.icon}</span>
+                <div className="flex-1">
+                  <p className="text-lg text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
+                    {achievement.title}
+                  </p>
+                  <p className="text-xs text-[#40E0D0]" style={{ fontFamily: 'Georgia, serif' }}>
+                    {achievement.description}
+                  </p>
+                </div>
+                {achievement.earned && (
+                  <div className="text-[#22C55E] text-xl">✓</div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* Нижний отступ */}
-      <div className="h-20" />
     </div>
   );
 }
