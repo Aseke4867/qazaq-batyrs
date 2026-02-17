@@ -4,7 +4,7 @@ import { DombyraIcon } from "@/app/components/DombyraIcon";
 import { BatyrCharacter } from "@/app/components/BatyrCharacter";
 import { NPCCharacter } from "@/app/components/NPCCharacter";
 import { SpeechBubble } from "@/app/components/SpeechBubble";
-import { Volume2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 
 interface DialogueScreenProps {
@@ -57,11 +57,9 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
 
   const handleContinue = () => {
     if (selectedChoice === null) return;
-
     const choice = currentDialogue.choices.find(c => c.id === selectedChoice);
     const earnedXP = choice?.xp || 0;
     setTotalXP(prev => prev + earnedXP);
-
     if (currentStep < maxSteps - 1) {
       setCurrentStep(prev => prev + 1);
       setSelectedChoice(null);
@@ -74,9 +72,20 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-[#D4A373] via-[#E8C9A0] to-[#D4A373] flex items-center justify-center">
+    <div className="
+      relative 
+      w-full 
+      min-h-[100dvh]                  // ← фикс высоты + адаптация
+      overflow-y-auto 
+      overflow-x-hidden 
+      bg-gradient-to-b from-[#D4A373] via-[#E8C9A0] to-[#D4A373] 
+      flex 
+      flex-col 
+      items-center 
+      px-4 sm:px-6 py-6
+    ">
       {/* Yurt Interior Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1579776722778-8365fa4c3f76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5dXJ0JTIwaW50ZXJpb3IlMjBjYXJwZXQlMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3Njk5Njc4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
@@ -84,7 +93,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
             className="w-full h-full object-cover opacity-50 blur-[1px]"
           />
         </div>
-        
+       
         <div className="absolute bottom-0 left-0 right-0 h-1/3 opacity-40">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1761152006885-c30a627bff18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcmllbnRhbCUyMGNhcnBldCUyMHBhdHRlcm4lMjBjb2xvcmZ1bHxlbnwxfHx8fDE3Njk5Njc4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
@@ -92,25 +101,22 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
             className="w-full h-full object-cover"
           />
         </div>
-
         <div className="absolute top-0 left-0 w-full h-24 opacity-30">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1763771075320-c7400ad3a2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b29kZW4lMjBjYXJ2ZWQlMjBwYXR0ZXJuJTIwdGV4dHVyZXxlbnwxfHx8fDE3Njk5Njc4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            src="https://images.unsplash.com/photo-1763771075320-c7400ad3a2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwxw29kZW4lMjBjYXJ2ZWQlMjBwYXR0ZXJuJTIwdGV4dHVyZXxlbnwxfHx8fDE3Njk5Njc4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="Wooden pattern"
             className="w-full h-full object-cover"
           />
         </div>
-        
+       
         <div className="absolute top-12 right-8 opacity-70">
           <DombyraIcon className="w-16 h-16 text-[#8B4513]" />
         </div>
-
         <div className="absolute inset-0 bg-gradient-radial from-[#FFE4B5]/30 via-transparent to-[#8B4513]/20"></div>
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-md h-full flex flex-col px-6 py-6">
-        
+      <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
         {/* Top Bar - Mission Title and Progress */}
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-4">
@@ -133,7 +139,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1">
                     {[...Array(maxSteps)].map((_, i) => (
-                      <div 
+                      <div
                         key={i}
                         className={`w-8 h-2 rounded-full ${i <= currentStep ? 'bg-[#40E0D0]' : 'bg-gray-300'}`}
                       ></div>
@@ -148,16 +154,15 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
           </div>
         </div>
 
-        {/* Characters Scene */}
-        <div className="flex-1 flex flex-col justify-center gap-6 mb-6">
-          
-          {/* NPC Character with speech bubble */}
+        {/* Characters Scene + Choices — теперь со скроллом */}
+        <div className="flex-1 flex flex-col gap-6 overflow-y-auto pb-6">
+          {/* NPC + speech bubble */}
           <div className="flex items-start gap-3">
             <div className="flex-shrink-0">
               <NPCCharacter />
             </div>
             <div className="flex-1 mt-8">
-              <SpeechBubble 
+              <SpeechBubble
                 text={currentDialogue.npcText}
                 hasAudio={true}
                 onAudioClick={() => console.log('Play audio')}
@@ -165,23 +170,21 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
             </div>
           </div>
 
-          {/* Player Character (smaller, bottom right) */}
+          {/* Player Character */}
           <div className="flex justify-end pr-4">
-            <div className="scale-75 origin-bottom-right">
+            <div className="scale-90 origin-bottom-right">  {/* ← уменьшил scale для мобильных */}
               <BatyrCharacter />
             </div>
           </div>
-        </div>
 
-        {/* Dialogue Choice Buttons */}
-        <div className="space-y-3 mb-4">
-          <p className="text-sm text-[#1E3A8A] text-center mb-2 px-4 py-2 bg-white/70 rounded-lg" style={{ fontFamily: 'Georgia, serif' }}>
+          {/* Prompt + Choices */}
+          <p className="text-sm text-[#1E3A8A] text-center mb-3 px-4 py-2 bg-white/70 rounded-lg" style={{ fontFamily: 'Georgia, serif' }}>
             {currentDialogue.prompt}
           </p>
-          
+
           {currentDialogue.choices.map((choice) => {
             const isSelected = selectedChoice === choice.id;
-            
+
             return (
               <button
                 key={choice.id}
@@ -193,8 +196,8 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
                 {isSelected && (
                   <div className="absolute inset-0 bg-[#40E0D0] rounded-2xl blur-lg opacity-40"></div>
                 )}
-                
-                <div className={`relative rounded-2xl px-6 py-4 flex items-center justify-between border-3 shadow-lg transition-all ${
+
+                <div className={`relative rounded-2xl px-5 py-4 flex items-center justify-between border-3 shadow-lg transition-all ${
                   isSelected
                     ? 'bg-gradient-to-r from-[#40E0D0] to-[#20B2AA] border-[#FFD700]'
                     : 'bg-white/85 border-[#FFD700] hover:bg-white/95'
@@ -208,19 +211,8 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
                   }`} style={{ fontFamily: 'Georgia, serif' }}>
                     {choice.text}
                   </span>
-                  
-                  <div 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      console.log('Play choice audio');
-                    }}
-                    className={`flex-shrink-0 p-2 rounded-full transition-all cursor-pointer ${
-                    isSelected 
-                      ? 'bg-white/20 hover:bg-white/30' 
-                      : 'bg-[#40E0D0]/20 hover:bg-[#40E0D0]/30'
-                  }`}>
-                    <Volume2 className={`w-5 h-5 ${isSelected ? 'text-white' : 'text-[#40E0D0]'}`} />
-                  </div>
+
+                  {/* Убрал Volume2 (подсказку) */}
                   
                   <KazakhOrnament className={`w-8 h-8 opacity-60 scale-x-[-1] ${
                     isSelected ? 'text-white' : 'text-[#8B4513]'
@@ -232,8 +224,8 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
         </div>
 
         {/* Continue Button */}
-        <div className="flex justify-center">
-          <button 
+        <div className="flex justify-center pb-6">
+          <button
             disabled={!selectedChoice}
             onClick={handleContinue}
             className={`relative group ${!selectedChoice && 'opacity-50 cursor-not-allowed'}`}
