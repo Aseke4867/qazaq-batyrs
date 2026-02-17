@@ -43,7 +43,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       ]
     },
     {
-      npcText: "Қош! Қайта келіңіз!",
+      npcText: "Сау болыңыз! Қайта келіңіз!",
       prompt: "Қоштасу / Say goodbye:",
       choices: [
         { id: 1, text: "Сау болыңыз!", isCorrect: true, xp: 50 },
