@@ -30,15 +30,16 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         px-4 sm:px-6 py-6
       "
     >
- {/* Background Layer */}
-<div className="absolute inset-0 overflow-hidden pointer-events-none">
-  {/* Steppe Background */}
-  <div className="absolute inset-0">
-    <ImageWithFallback
-      src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      className="w-full h-full object-cover blur-[1px] opacity-85"
-    />
-  </div>
+      {/* Background Layer — только степь */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Kazakh steppe"
+            className="w-full h-full object-cover blur-[1px] opacity-85"
+          />
+        </div>
+      </div>
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
