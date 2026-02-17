@@ -23,7 +23,6 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         min-h-[100dvh]
         overflow-y-auto
         overflow-x-hidden
-        bg-gradient-to-b from-[#87CEEB] to-[#D4A373]
         flex
         flex-col
         items-center
@@ -31,28 +30,22 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         px-4 sm:px-6 py-6
       "
     >
-      {/* Background Layer — красивая казахская степь */}
+      {/* Фон — чистая казахская степь */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Steppe Background — новое фото с золотым закатом */}
-        <div className="absolute inset-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1508186739928-4c3e1f5a7e9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"  // красивая степь с закатом
-            alt="Kazakh steppe at sunset"
-            className="w-full h-full object-cover blur-[2px] opacity-70"  // лёгкий блюр и opacity для атмосферы
-          />
-        </div>
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1508186739928-4c3e1f5a7e9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+          alt="Kazakh steppe at sunset"
+          className="w-full h-full object-cover blur-[1px] opacity-80"  // лёгкий блюр для мягкости, opacity=80% чтобы не тускло
+        />
+      </div>
 
-        {/* Более заметный орёл */}
-        <div 
-          className="absolute top-10 right-8 w-48 h-48 opacity-85 animate-float"
-          style={{ animationDuration: '12s' }}  // плавное парение
-        >
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Flying eagle"
-            className="w-full h-full object-cover rounded-full drop-shadow-xl"
-          />
-        </div>
+      {/* Орёл — статичный, без кружка и анимации */}
+      <div className="absolute top-10 right-8 w-56 h-56 opacity-90 pointer-events-none">
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="Flying eagle"
+          className="w-full h-full object-contain drop-shadow-2xl"  // без rounded-full, просто силуэт
+        />
       </div>
 
       {/* Main Content Container */}
