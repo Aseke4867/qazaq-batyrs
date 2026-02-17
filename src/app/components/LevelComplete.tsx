@@ -79,12 +79,17 @@ export function LevelComplete({ onNavigate, earnedXP, totalXP }: LevelCompletePr
           <KazakhOrnament className="absolute -bottom-4 -right-4 w-16 h-16 text-[#FFD700] opacity-80 scale-[-1]" />
         </div>
 
-        {/* Character Celebration */}
-        <div className="flex justify-center mb-6">
-          <div className="scale-90 sm:scale-100 animate-bounce" style={{ animationDuration: '1s' }}>
-            <BatyrCharacter />
-          </div>
-        </div>
+      {/* Character Celebration */}
+<div className="flex justify-center mb-6">
+  <div 
+    className="relative"
+    style={{
+      animation: 'gentleBounce 2.5s infinite ease-in-out'  // 2.5s — плавный темп
+    }}
+  >
+    <BatyrCharacter />
+  </div>
+</div>
 
         {/* XP Earned */}
         <div className="relative mb-6">
