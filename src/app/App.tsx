@@ -32,30 +32,22 @@ export default function App() {
     setXp(prev => prev + earned);
   };
 
-  // Render current screen
   const renderScreen = () => {
     switch (currentScreen) {
       case 'menu':
         return <MainMenu onNavigate={handleNavigate} xp={xp} />;
-      
       case 'levels':
         return <LevelSelect onNavigate={handleNavigate} onStartLevel={handleStartLevel} xp={xp} />;
-      
       case 'quiz':
         return <QuizScreen onNavigate={handleNavigate} onComplete={handleLevelComplete} xp={xp} />;
-      
       case 'dialogue':
         return <DialogueScreen onNavigate={handleNavigate} onComplete={handleLevelComplete} />;
-      
       case 'levelComplete':
         return <LevelComplete onNavigate={handleNavigate} earnedXP={earnedXP} totalXP={xp} />;
-      
       case 'profile':
         return <ProfileScreen onNavigate={handleNavigate} xp={xp} />;
-      
       case 'friends':
         return <FriendsScreen onNavigate={handleNavigate} xp={xp} />;
-      
       default:
         return <MainMenu onNavigate={handleNavigate} xp={xp} />;
     }
@@ -70,7 +62,9 @@ export default function App() {
         overflow-x-hidden 
         overflow-y-auto 
         bg-gradient-to-b from-blue-900 to-green-900 
-        text-white
+        text-white 
+        flex 
+        flex-col
       "
     >
       {renderScreen()}
