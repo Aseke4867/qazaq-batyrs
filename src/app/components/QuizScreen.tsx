@@ -37,6 +37,26 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
         { id: "C", text: "Hello", isCorrect: true },
         { id: "D", text: "Please", isCorrect: false },
       ]
+    },
+    {
+      question: "Әке",
+      translation: "Translate to English:",
+      answers: [
+        { id: "A", text: "Mother", isCorrect: false },
+        { id: "B", text: "Father", isCorrect: true },
+        { id: "C", text: "Sister", isCorrect: false },
+        { id: "D", text: "Brother", isCorrect: false },
+      ]
+    },
+    {
+      question: "Үй",
+      translation: "Translate to English:",
+      answers: [
+        { id: "A", text: "School", isCorrect: false },
+        { id: "B", text: "Car", isCorrect: false },
+        { id: "C", text: "Home", isCorrect: true },
+        { id: "D", text: "River", isCorrect: false },
+      ]
     }
   ];
 
@@ -88,15 +108,15 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
 
   return (
     <div className="
-      relative 
-      w-full 
-      min-h-[100dvh]                  // ← фикс высоты + адаптация под мобильные
-      overflow-y-auto 
-      overflow-x-hidden 
-      bg-gradient-to-b from-[#87CEEB] to-[#D4A373] 
-      flex 
-      flex-col 
-      items-center 
+      relative
+      w-full
+      min-h-[100dvh]
+      overflow-y-auto
+      overflow-x-hidden
+      bg-gradient-to-b from-[#87CEEB] to-[#D4A373]
+      flex
+      flex-col
+      items-center
       px-4 sm:px-6 py-6
     ">
       {/* Background Layer */}
@@ -108,7 +128,6 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
             className="w-full h-full object-cover blur-sm opacity-40"
           />
         </div>
-
         <div className="absolute top-20 right-12 w-20 h-20 opacity-35 animate-pulse" style={{ animationDuration: '4s' }}>
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
@@ -128,19 +147,16 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
           >
             <ArrowLeft className="w-5 h-5 text-[#1E3A8A]" />
           </button>
-
           {/* Timer */}
           <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 border-2 border-[#FFD700] shadow-lg">
             <Clock className={`w-5 h-5 ${timer <= 3 ? 'text-[#DC2626] animate-pulse' : 'text-[#1E3A8A]'}`} />
             <span className="text-xl text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>{timer}</span>
           </div>
-
           {/* Score */}
           <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 border-2 border-[#40E0D0] shadow-lg">
             <Star className="w-5 h-5 text-[#FFD700]" />
             <span className="text-lg text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>{score}</span>
           </div>
-
           {/* Progress */}
           <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 border-2 border-[#8B4513] shadow-lg">
             <span className="text-lg text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
@@ -153,7 +169,6 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
         <div className="relative mb-6">
           <KazakhOrnament className="absolute -top-4 -left-4 w-16 h-16 text-[#FFD700] opacity-90 z-10" />
           <KazakhOrnament className="absolute -top-4 -right-4 w-16 h-16 text-[#FFD700] opacity-90 scale-x-[-1] z-10" />
-
           <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border-4 border-[#40E0D0] shadow-2xl">
             <div className="text-center">
               <p className="text-sm text-[#40E0D0] mb-2" style={{ fontFamily: 'Georgia, serif' }}>
@@ -165,18 +180,16 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
               <div className="h-1 w-24 bg-gradient-to-r from-transparent via-[#FFD700] to-transparent mx-auto"></div>
             </div>
           </div>
-
           <KazakhOrnament className="absolute -bottom-4 -left-4 w-16 h-16 text-[#FFD700] opacity-90 scale-y-[-1] z-10" />
           <KazakhOrnament className="absolute -bottom-4 -right-4 w-16 h-16 text-[#FFD700] opacity-90 scale-[-1] z-10" />
         </div>
 
-        {/* Answer Buttons — теперь со скроллом, если много */}
+        {/* Answer Buttons */}
         <div className="flex-1 flex flex-col gap-4 mb-6 overflow-y-auto">
           {currentQ.answers.map((answer) => {
             const isSelected = selectedAnswer === answer.id;
             const isCorrect = answer.isCorrect && isSelected && showResult;
             const isWrong = isSelected && !answer.isCorrect && showResult;
-
             return (
               <button
                 key={answer.id}
@@ -192,7 +205,6 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
                 {isWrong && (
                   <div className="absolute inset-0 bg-[#DC2626] rounded-2xl blur-lg opacity-50"></div>
                 )}
-
                 <div className={`relative rounded-2xl px-5 py-4 flex items-center gap-4 border-4 shadow-lg transition-all ${
                   isCorrect
                     ? 'bg-gradient-to-r from-[#22C55E] to-[#16A34A] border-[#15803D]'
@@ -213,16 +225,13 @@ export function QuizScreen({ onNavigate, onComplete, xp }: QuizScreenProps) {
                       </span>
                     </div>
                   </div>
-
                   <span className={`text-xl sm:text-2xl flex-1 text-left ${
                     isCorrect || isWrong ? 'text-white' : 'text-[#1E3A8A]'
                   }`} style={{ fontFamily: 'Georgia, serif' }}>
                     {answer.text}
                   </span>
-
                   {isCorrect && <div className="flex-shrink-0 text-white text-2xl">✓</div>}
                   {isWrong && <div className="flex-shrink-0 text-white text-2xl">✗</div>}
-
                   <KazakhOrnament className={`absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 opacity-40 ${
                     isCorrect || isWrong ? 'text-white' : 'text-[#8B4513]'
                   }`} />
