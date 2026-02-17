@@ -53,13 +53,7 @@ export function BatyrCharacter() {
           strokeWidth="2"
         />
 
-        {/* Hat decorative band */}
-        <ellipse cx="140" cy="70" rx="58" ry="8" fill="#FFD700" stroke="#B8860B" strokeWidth="2" />
-
-        {/* Fur trim on hat */}
-        <ellipse cx="140" cy="75" rx="60" ry="6" fill="#F5F5DC" opacity="0.8" />
-
-        {/* Face - чистое, без лишних овалов */}
+        {/* Face */}
         {/* Eyes */}
         <ellipse cx="115" cy="95" rx="8" ry="12" fill="#2C1810" />
         <ellipse cx="165" cy="95" rx="8" ry="12" fill="#2C1810" />
