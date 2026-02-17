@@ -47,6 +47,6 @@ img, .character, .background {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);  /* ← высота прыжка. Попробуй -8px (почти незаметно) или -15px */
+    transform: translateY(-8px);  // низкий прыжок
   }
 }
