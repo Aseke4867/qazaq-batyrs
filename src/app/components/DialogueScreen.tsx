@@ -1,6 +1,5 @@
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { KazakhOrnament } from "@/app/components/KazakhOrnament";
-import { DombyraIcon } from "@/app/components/DombyraIcon";
 import { BatyrCharacter } from "@/app/components/BatyrCharacter";
 import { NPCCharacter } from "@/app/components/NPCCharacter";
 import { SpeechBubble } from "@/app/components/SpeechBubble";
@@ -19,7 +18,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
 
   const dialogueSteps = [
     {
-      npcText: "Сәлеметсіз бе",
+      npcText: "Сәлеметсіз бе?",
       prompt: "Қалай жауап бересіз? / How will you respond?",
       choices: [
         { id: 1, text: "Қош келдіңіз!", isCorrect: true, xp: 50 },
@@ -27,7 +26,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       ]
     },
     {
-      npcText: "Қалыңыз қалай??",
+      npcText: "Рақмет! Аман-сау ма?",
       prompt: "Жалғастырыңыз / Continue:",
       choices: [
         { id: 1, text: "Жақсы, рақмет!", isCorrect: true, xp: 50 },
@@ -43,7 +42,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       ]
     },
     {
-      npcText: "Сау болыңыз!",
+      npcText: "Қош! Қайта келіңіз!",
       prompt: "Қоштасу / Say goodbye:",
       choices: [
         { id: 1, text: "Сау болыңыз!", isCorrect: true, xp: 50 },
@@ -64,8 +63,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       setCurrentStep(prev => prev + 1);
       setSelectedChoice(null);
     } else {
-      // Dialogue complete
-      const bonusXP = 100; // Completion bonus
+      const bonusXP = 100;
       onComplete(totalXP + earnedXP + bonusXP);
       onNavigate('levelComplete');
     }
@@ -73,46 +71,36 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
 
   return (
     <div className="
-      relative 
-      w-full 
-      min-h-[100dvh]                  
-      overflow-y-auto 
-      overflow-x-hidden 
-      bg-gradient-to-b from-[#D4A373] via-[#E8C9A0] to-[#D4A373] 
-      flex 
-      flex-col 
-      items-center 
+      relative
+      w-full
+      min-h-[100dvh]
+      overflow-y-auto
+      overflow-x-hidden
+      bg-gradient-to-b from-[#D4A373] via-[#E8C9A0] to-[#D4A373]
+      flex
+      flex-col
+      items-center
       px-4 sm:px-6 py-6
     ">
-      {/* Yurt Interior Background */}
+      {/* Упрощённый фон: только юрта + ковёр */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Основной интерьер юрты */}
         <div className="absolute inset-0">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1579776722778-8365fa4c3f76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5dXJ0JTIwaW50ZXJpb3IlMjBjYXJwZXQlMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3Njk5Njc4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="Yurt interior"
-            className="w-full h-full object-cover opacity-50 blur-[1px]"
+            className="w-full h-full object-cover opacity-60"  // opacity чуть выше, чтобы не было слишком тускло
           />
         </div>
-       
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 opacity-40">
+
+        {/* Ковёр-орнамент снизу */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/3">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1761152006885-c30a627bff18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcmllbnRhbCUyMGNhcnBldCUyMHBhdHRlcm4lMjBjb2xvcmZ1bHxlbnwxfHx8fDE3Njk5Njc4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Carpet"
+            alt="Carpet ornament"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute top-0 left-0 w-full h-24 opacity-30">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1763771075320-c7400ad3a2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwxw29kZW4lMjBjYXJ2ZWQlMjBwYXR0ZXJuJTIwdGV4dHVyZXxlbnwxfHx8fDE3Njk5Njc4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Wooden pattern"
-            className="w-full h-full object-cover"
-          />
-        </div>
-       
-        <div className="absolute top-12 right-8 opacity-70">
-          <DombyraIcon className="w-16 h-16 text-[#8B4513]" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-radial from-[#FFE4B5]/30 via-transparent to-[#8B4513]/20"></div>
       </div>
 
       {/* Main Content Container */}
@@ -154,7 +142,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
           </div>
         </div>
 
-        {/* Characters Scene + Choices — теперь со скроллом */}
+        {/* Characters Scene + Choices */}
         <div className="flex-1 flex flex-col gap-6 overflow-y-auto pb-6">
           {/* NPC + speech bubble */}
           <div className="flex items-start gap-3">
@@ -172,7 +160,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
 
           {/* Player Character */}
           <div className="flex justify-end pr-4">
-            <div className="scale-90 origin-bottom-right">  {/* ← уменьшил scale для мобильных */}
+            <div className="scale-90 origin-bottom-right">
               <BatyrCharacter />
             </div>
           </div>
@@ -184,7 +172,6 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
 
           {currentDialogue.choices.map((choice) => {
             const isSelected = selectedChoice === choice.id;
-
             return (
               <button
                 key={choice.id}
@@ -196,7 +183,6 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
                 {isSelected && (
                   <div className="absolute inset-0 bg-[#40E0D0] rounded-2xl blur-lg opacity-40"></div>
                 )}
-
                 <div className={`relative rounded-2xl px-5 py-4 flex items-center justify-between border-3 shadow-lg transition-all ${
                   isSelected
                     ? 'bg-gradient-to-r from-[#40E0D0] to-[#20B2AA] border-[#FFD700]'
