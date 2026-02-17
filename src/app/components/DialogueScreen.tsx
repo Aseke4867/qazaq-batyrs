@@ -76,36 +76,26 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
       min-h-[100dvh]
       overflow-y-auto
       overflow-x-hidden
-      bg-gradient-to-b from-[#D4A373] via-[#E8C9A0] to-[#D4A373]
+      bg-gradient-to-b from-[#D4A373] to-[#E8C9A0]  // лёгкий градиент, можно убрать если хочешь совсем однотонный
       flex
       flex-col
       items-center
       px-4 sm:px-6 py-6
     ">
-      {/* Упрощённый фон: только юрта + ковёр */}
+      {/* Простой фон: только интерьер юрты */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Основной интерьер юрты */}
         <div className="absolute inset-0">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1579776722778-8365fa4c3f76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5dXJ0JTIwaW50ZXJpb3IlMjBjYXJwZXQlMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3Njk5Njc4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="Yurt interior"
-            className="w-full h-full object-cover opacity-60"  // opacity чуть выше, чтобы не было слишком тускло
-          />
-        </div>
-
-        {/* Ковёр-орнамент снизу */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1761152006885-c30a627bff18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcmllbnRhbCUyMGNhcnBldCUyMHBhdHRlcm4lMjBjb2xvcmZ1bHxlbnwxfHx8fDE3Njk5Njc4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Carpet ornament"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-70"  // opacity=70% — мягкий, но видимый фон
           />
         </div>
       </div>
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
-        {/* Top Bar - Mission Title and Progress */}
+        {/* Top Bar */}
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-4">
             <button
@@ -142,7 +132,7 @@ export function DialogueScreen({ onNavigate, onComplete }: DialogueScreenProps) 
           </div>
         </div>
 
-        {/* Characters Scene + Choices */}
+        {/* Characters + Choices */}
         <div className="flex-1 flex flex-col gap-6 overflow-y-auto pb-6">
           {/* NPC + speech bubble */}
           <div className="flex items-start gap-3">
