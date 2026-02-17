@@ -17,9 +17,23 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
   ];
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-[#87CEEB] to-[#D4A373] flex items-center justify-center">
-      {/* Background Layer */}
-      <div className="absolute inset-0 overflow-hidden">
+    <div 
+      className="
+        relative 
+        w-full 
+        min-h-[100dvh]                  // ← заменил h-screen на min-h-[100dvh]
+        overflow-y-auto                  // ← разрешил вертикальный скролл
+        overflow-x-hidden                // ← запретил горизонтальный
+        bg-gradient-to-b from-[#87CEEB] to-[#D4A373] 
+        flex 
+        flex-col 
+        items-center 
+        justify-start                    // ← justify-start вместо center, чтобы контент шёл сверху
+        px-4 sm:px-6 py-6                // ← уменьшил padding для мобильных
+      "
+    >
+      {/* Background Layer — оставил, но сделал его не фиксированным */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Steppe Background */}
         <div className="absolute inset-0">
           <ImageWithFallback
@@ -28,7 +42,7 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
             className="w-full h-full object-cover blur-sm opacity-40"
           />
         </div>
-        
+
         {/* Flying Eagle */}
         <div className="absolute top-20 right-12 w-20 h-20 opacity-35 animate-pulse" style={{ animationDuration: '4s' }}>
           <ImageWithFallback
@@ -40,10 +54,9 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 w-full max-w-md h-full flex flex-col px-6 py-8">
-        
+      <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
         {/* XP Display */}
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-end">
           <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-5 py-3 border-3 border-[#FFD700] shadow-lg">
             <Zap className="w-6 h-6 text-[#FFA500]" />
             <span className="text-xl text-[#1E3A8A]" style={{ fontFamily: 'Georgia, serif' }}>
@@ -53,13 +66,13 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         </div>
 
         {/* Title */}
-        <div className="relative mb-8">
-          <KazakhOrnament className="absolute -top-4 -left-4 w-20 h-20 text-[#FFD700] opacity-80" />
-          <KazakhOrnament className="absolute -top-4 -right-4 w-20 h-20 text-[#FFD700] opacity-80 scale-x-[-1]" />
+        <div className="relative">
+          <KazakhOrnament className="absolute -top-4 -left-4 w-16 h-16 text-[#FFD700] opacity-80" />
+          <KazakhOrnament className="absolute -top-4 -right-4 w-16 h-16 text-[#FFD700] opacity-80 scale-x-[-1]" />
           
           <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 border-4 border-[#40E0D0] shadow-2xl">
             <div className="text-center">
-              <h1 className="text-5xl text-[#1E3A8A] mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <h1 className="text-4xl md:text-5xl text-[#1E3A8A] mb-2" style={{ fontFamily: 'Georgia, serif' }}>
                 Qazaq Batyrs
               </h1>
               <p className="text-lg text-[#40E0D0]" style={{ fontFamily: 'Georgia, serif' }}>
@@ -70,12 +83,12 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         </div>
 
         {/* Character */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center">
           <BatyrCharacter />
         </div>
 
         {/* Menu Buttons */}
-        <div className="flex-1 flex flex-col gap-4 mb-6">
+        <div className="flex flex-col gap-5">
           {menuButtons.map((button) => {
             const Icon = button.icon;
             return (
@@ -84,25 +97,21 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
                 onClick={() => onNavigate(button.screen)}
                 className="relative group"
               >
-                {/* Glow effect */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${button.color} rounded-2xl blur-md opacity-40 group-hover:opacity-70 transition-all`}></div>
                 
-                <div className={`relative bg-gradient-to-r ${button.color} rounded-2xl px-8 py-5 flex items-center justify-between border-3 border-white shadow-lg hover:scale-105 transition-transform`}>
-                  {/* Ornament */}
-                  <KazakhOrnament className="w-10 h-10 text-white opacity-60" />
+                <div className={`relative bg-gradient-to-r ${button.color} rounded-2xl px-6 py-4 flex items-center justify-between border-3 border-white shadow-lg hover:scale-105 transition-transform`}>
+                  <KazakhOrnament className="w-8 h-8 text-white opacity-60" />
                   
-                  {/* Text */}
                   <div className="flex-1 text-center">
-                    <p className="text-2xl text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>
+                    <p className="text-xl text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>
                       {button.label}
                     </p>
-                    <p className="text-sm text-white/80" style={{ fontFamily: 'Georgia, serif' }}>
+                    <p className="text-xs text-white/80" style={{ fontFamily: 'Georgia, serif' }}>
                       {button.labelEn}
                     </p>
                   </div>
                   
-                  {/* Icon */}
-                  <Icon className="w-10 h-10 text-white" />
+                  <Icon className="w-8 h-8 text-white" />
                 </div>
               </button>
             );
@@ -110,8 +119,8 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         </div>
 
         {/* Decorative Dombyra */}
-        <div className="flex justify-center opacity-70">
-          <DombyraIcon className="w-16 h-16 text-[#8B4513]" />
+        <div className="flex justify-center opacity-70 mt-4">
+          <DombyraIcon className="w-14 h-14 text-[#8B4513]" />
         </div>
       </div>
     </div>
