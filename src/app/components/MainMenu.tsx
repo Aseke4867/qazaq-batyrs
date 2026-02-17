@@ -30,23 +30,26 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         px-4 sm:px-6 py-6
       "
     >
-      {/* Фон — чистая казахская степь */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <ImageWithFallback
-          src="https://images.unsplash.com/photo-1508186739928-4c3e1f5a7e9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
-          alt="Kazakh steppe at sunset"
-          className="w-full h-full object-cover blur-[1px] opacity-80"  // лёгкий блюр для мягкости, opacity=80% чтобы не тускло
-        />
-      </div>
+ {/* Background Layer */}
+<div className="absolute inset-0 overflow-hidden pointer-events-none">
+  {/* Steppe Background */}
+  <div className="absolute inset-0">
+    <ImageWithFallback
+      src="https://images.unsplash.com/photo-1622473596148-3c5c0e0c4a0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+      alt="Kazakh golden steppe at sunset"
+      className="w-full h-full object-cover blur-[1px] opacity-85"
+    />
+  </div>
 
-      {/* Орёл — статичный, без кружка и анимации */}
-      <div className="absolute top-10 right-8 w-56 h-56 opacity-90 pointer-events-none">
-        <ImageWithFallback
-          src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-          alt="Flying eagle"
-          className="w-full h-full object-contain drop-shadow-2xl"  // без rounded-full, просто силуэт
-        />
-      </div>
+  {/* Более заметный статичный орёл (без анимации и кружка) */}
+  <div className="absolute top-10 right-8 w-56 h-56 opacity-90 pointer-events-none">
+    <ImageWithFallback
+      src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      alt="Eagle in sky"
+      className="w-full h-full object-contain drop-shadow-2xl"
+    />
+  </div>
+</div>
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
