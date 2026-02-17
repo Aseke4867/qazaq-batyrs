@@ -47,6 +47,15 @@ img, .character, .background {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);  // низкий прыжок
+    transform: translateY(-6px);  // низкий прыжок
+  }
+}
+
+@keyframes gentleBounceMain {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);  // ← очень низкий прыжок, почти покачивание
   }
 }
