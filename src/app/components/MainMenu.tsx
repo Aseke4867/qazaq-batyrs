@@ -44,7 +44,7 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         </div>
 
         {/* Flying Eagle */}
-        <div className="absolute top-20 right-12 w-20 h-20 opacity-35 animate-pulse" style={{ animationDuration: '4s' }}>
+        <div className="absolute top-20 right-12 w-40 h-40 animate-pulse" style={{ animationDuration: '4s' }}>
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
             alt="Eagle"
@@ -82,10 +82,16 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
           </div>
         </div>
 
-        {/* Character */}
-        <div className="flex justify-center">
-          <BatyrCharacter />
-        </div>
+{/* Character */}
+<div className="flex justify-center mb-8">
+  <div 
+    style={{
+      animation: 'gentleBounceMain 3.5s infinite ease-in-out',  // медленнее и ниже
+    }}
+  >
+    <BatyrCharacter />
+  </div>
+</div>
 
         {/* Menu Buttons */}
         <div className="flex flex-col gap-5">
