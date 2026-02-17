@@ -30,12 +30,12 @@ export function BatyrCharacter() {
         <circle cx="140" cy="196" r="6" fill="#DAA520" stroke="#8B6914" strokeWidth="1" />
 
         {/* Arms */}
-        <ellipse cx="85" cy="185" rx="18" ry="35" fill="#DC2626" stroke="#991B1B" strokeWidth="2" transform="rotate(-20 85 185)" />
-        <ellipse cx="195" cy="185" rx="18" ry="35" fill="#DC2626" stroke="#991B1B" strokeWidth="2" transform="rotate(20 195 185)" />
+        <ellipse cx="90" cy="190" rx="22" ry="28" fill="#DC2626" stroke="#991B1B" strokeWidth="2" transform="rotate(-15 90 190)" />
+        <ellipse cx="190" cy="190" rx="22" ry="28" fill="#DC2626" stroke="#991B1B" strokeWidth="2" transform="rotate(15 190 190)" />
 
         {/* Hands */}
-        <circle cx="75" cy="210" r="12" fill="#D4A373" stroke="#8B6914" strokeWidth="2" />
-        <circle cx="205" cy="210" r="12" fill="#D4A373" stroke="#8B6914" strokeWidth="2" />
+        <circle cx="78" cy="215" r="14" fill="#D4A373" stroke="#8B6914" strokeWidth="2" />
+        <circle cx="202" cy="215" r="14" fill="#D4A373" stroke="#8B6914" strokeWidth="2" />
 
         {/* Legs - simple boots */}
         <rect x="110" y="275" width="25" height="35" rx="4" fill="#4A2511" stroke="#2C1810" strokeWidth="2" />
