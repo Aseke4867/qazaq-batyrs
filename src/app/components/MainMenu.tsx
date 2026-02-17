@@ -40,16 +40,6 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
     />
   </div>
 
-  {/* Более заметный статичный орёл (без анимации и кружка) */}
-  <div className="absolute top-10 right-8 w-56 h-56 opacity-90 pointer-events-none">
-    <ImageWithFallback
-      src="https://images.unsplash.com/photo-1698073118617-03ce7d0f9847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlYWdsZSUyMGZseWluZyUyMHNreXxlbnwxfHx8fDE3Njk5NjY1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-      alt="Eagle in sky"
-      className="w-full h-full object-contain drop-shadow-2xl"
-    />
-  </div>
-</div>
-
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
         {/* XP Display */}
