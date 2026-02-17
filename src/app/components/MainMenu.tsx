@@ -2,7 +2,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { KazakhOrnament } from "@/app/components/KazakhOrnament";
 import { DombyraIcon } from "@/app/components/DombyraIcon";
 import { BatyrCharacter } from "@/app/components/BatyrCharacter";
-import { Play, User, Users, ShoppingBag, Zap } from "lucide-react";
+import { Play, User, Users, Zap } from "lucide-react";
 
 interface MainMenuProps {
   onNavigate: (screen: string) => void;
@@ -14,7 +14,6 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
     { id: 'levels', icon: Play, label: 'Ойнау', labelEn: 'Play', color: 'from-[#40E0D0] to-[#20B2AA]', screen: 'levels' },
     { id: 'profile', icon: User, label: 'Профиль', labelEn: 'Profile', color: 'from-[#FFD700] to-[#DAA520]', screen: 'profile' },
     { id: 'friends', icon: Users, label: 'Достар', labelEn: 'Friends', color: 'from-[#FF6B9D] to-[#E05780]', screen: 'friends' },
-    { id: 'shop', icon: ShoppingBag, label: 'Дүкен', labelEn: 'Shop', color: 'from-[#8B4513] to-[#654321]', screen: 'shop' },
   ];
 
   return (
