@@ -35,8 +35,7 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
   {/* Steppe Background */}
   <div className="absolute inset-0">
     <ImageWithFallback
-      src="https://images.unsplash.com/photo-1622473596148-3c5c0e0c4a0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
-      alt="Kazakh golden steppe at sunset"
+      src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       className="w-full h-full object-cover blur-[1px] opacity-85"
     />
   </div>
