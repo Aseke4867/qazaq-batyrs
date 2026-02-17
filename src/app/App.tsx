@@ -6,9 +6,8 @@ import { DialogueScreen } from "@/app/components/DialogueScreen";
 import { LevelComplete } from "@/app/components/LevelComplete";
 import { ProfileScreen } from "@/app/components/ProfileScreen";
 import { FriendsScreen } from "@/app/components/FriendsScreen";
-import { ShopScreen } from "@/app/components/ShopScreen";
 
-type Screen = 'menu' | 'levels' | 'quiz' | 'dialogue' | 'levelComplete' | 'profile' | 'friends' | 'shop';
+type Screen = 'menu' | 'levels' | 'quiz' | 'dialogue' | 'levelComplete' | 'profile' | 'friends';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('menu');
@@ -57,8 +56,6 @@ export default function App() {
       case 'friends':
         return <FriendsScreen onNavigate={handleNavigate} xp={xp} />;
       
-      case 'shop':
-        return <ShopScreen onNavigate={handleNavigate} xp={xp} />;
       
       default:
         return <MainMenu onNavigate={handleNavigate} xp={xp} />;
