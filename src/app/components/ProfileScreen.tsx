@@ -23,7 +23,7 @@ export function ProfileScreen({ onNavigate, xp }: ProfileScreenProps) {
   const achievements = [
     { id: 1, title: 'Бірінші қадам', description: 'Бірінші сабақты аяқтаңыз', earned: true, icon: '🎯' },
     { id: 2, title: 'Сөз шебері', description: '100 сөзді үйреніңіз', earned: true, icon: '📚' },
-    { id: 3, title: 'Батыр', description: '5 Деңгейге Жетініз', earned: false, icon: '⚔️' },
+    { id: 3, title: 'Батыр', description: '5 деңгейге Жетініз', earned: false, icon: '⚔️' },
     { id: 4, title: 'Қонақжай', description: 'Диалогтың миссиясын аяқтаңыз', earned: true, icon: '🏠' },
   ];
 
