@@ -20,7 +20,8 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
       className="
         relative
         w-full
-        min-h-[100dvh]
+        min-h-screen                // ← используем h-screen для полной высоты
+        h-[100svh]                  // ← fallback для мобильных (small viewport height)
         overflow-y-auto
         overflow-x-hidden
         flex
@@ -31,8 +32,8 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         bg-transparent
       "
     >
-      {/* Фон — степь на весь экран */}
-      <div className="fixed inset-0 h-screen pointer-events-none overflow-hidden z-0 bg-gradient-to-b from-[#87CEEB] to-[#D4A373]">
+      {/* Фон — фиксированный на весь экран */}
+      <div className="fixed inset-0 top-0 bottom-0 left-0 right-0 h-full w-full pointer-events-none overflow-hidden z-0">
         <img
           src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Kazakh steppe"
