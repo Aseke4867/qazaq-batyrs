@@ -13,7 +13,7 @@ export function FillInTheBlanksScreen({ onNavigate, onComplete, xp }: FillInTheB
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [showXPPopup, setShowXPPopup] = useState(false);
-  const [timer, setTimer] = useState(15); // больше времени, т.к. сложнее
+  const [timer, setTimer] = useState(15);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -24,7 +24,7 @@ export function FillInTheBlanksScreen({ onNavigate, onComplete, xp }: FillInTheB
       blank: "____",
       answers: [
         { id: "A", text: "Ана", isCorrect: false },
-        { id: "B", text: "Асыл", isCorrect: true },
+        { id: "B", text: "Қожа", isCorrect: true },
         { id: "C", text: "Әке", isCorrect: false },
         { id: "D", text: "Бала", isCorrect: false },
       ]
