@@ -32,15 +32,15 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
       "
     >
       {/* Фон — степь на весь экран */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="fixed inset-0 h-screen pointer-events-none overflow-hidden z-0 bg-gradient-to-b from-[#87CEEB] to-[#D4A373]">
         <img
-          src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Kazakh steppe"
           className="w-full h-full object-cover blur-[1px] opacity-85"
         />
       </div>
 
-      {/* Основной контент поверх фона */}
+      {/* Основной контент */}
       <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
         {/* XP Display */}
         <div className="flex justify-end">
