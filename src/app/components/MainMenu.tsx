@@ -28,15 +28,16 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         items-center
         justify-start
         px-4 sm:px-6 py-6
+        bg-transparent
       "
     >
       {/* Фон — степь на весь экран */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-       <img
-  src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  alt="Kazakh steppe"
-  className="w-full h-full object-cover blur-[1px] opacity-85 absolute inset-0"
-/>
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <img
+          src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Kazakh steppe"
+          className="w-full h-full object-cover blur-[1px] opacity-85"
+        />
       </div>
 
       {/* Основной контент поверх фона */}
