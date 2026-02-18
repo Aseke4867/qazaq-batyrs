@@ -27,7 +27,7 @@ export function LevelSelect({ onNavigate, onStartLevel, xp }: LevelSelectProps) 
       xpRequired: 0,
       color: 'from-[#FFD700] to-[#DAA520]',
       stars: 2
-    }
+    },
     {
   id: 'fillInTheBlanks',
   title: 'Сөйлемді толтыру',
