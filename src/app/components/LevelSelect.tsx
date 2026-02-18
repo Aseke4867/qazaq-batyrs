@@ -28,7 +28,15 @@ export function LevelSelect({ onNavigate, onStartLevel, xp }: LevelSelectProps) 
       color: 'from-[#FFD700] to-[#DAA520]',
       stars: 2
     }
-    // последние два уровня убраны
+    {
+  id: 'fillInTheBlanks',
+  title: 'Сөйлемді толтыру',
+  titleEn: 'Fill in the Sentence',
+  description: 'Жетіспейтін сөзді таңдаңыз',
+  xpRequired: 200,
+  color: 'from-[#8B5CF6] to-[#7C3AED]',
+  stars: 3
+}
   ];
 
   return (
