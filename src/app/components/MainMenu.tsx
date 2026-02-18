@@ -30,18 +30,16 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
         px-4 sm:px-6 py-6
       "
     >
-      {/* Background Layer — только степь */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Kazakh steppe"
-            className="w-full h-full object-cover blur-[1px] opacity-85"
-          />
-        </div>
+      {/* Фон — степь на весь экран */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1637842729600-d256c8960194?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Kazakh steppe"
+          className="w-full h-full object-cover blur-[1px] opacity-85"
+        />
       </div>
 
-      {/* Main Content Container */}
+      {/* Основной контент поверх фона */}
       <div className="relative z-10 w-full max-w-md flex flex-col gap-6">
         {/* XP Display */}
         <div className="flex justify-end">
@@ -92,10 +90,10 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
                 className="relative group"
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${button.color} rounded-2xl blur-md opacity-40 group-hover:opacity-70 transition-all`}></div>
-               
+                
                 <div className={`relative bg-gradient-to-r ${button.color} rounded-2xl px-6 py-4 flex items-center justify-between border-3 border-white shadow-lg hover:scale-105 transition-transform`}>
                   <KazakhOrnament className="w-8 h-8 text-white opacity-60" />
-                 
+                  
                   <div className="flex-1 text-center">
                     <p className="text-xl text-white mb-1" style={{ fontFamily: 'Georgia, serif' }}>
                       {button.label}
@@ -104,7 +102,7 @@ export function MainMenu({ onNavigate, xp }: MainMenuProps) {
                       {button.labelEn}
                     </p>
                   </div>
-                 
+                  
                   <Icon className="w-8 h-8 text-white" />
                 </div>
               </button>
